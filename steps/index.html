@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Основы Vue</title>
+    <style>
+        [f] {
+            display: none;
+        }
+    </style>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+</head>
+<body>
+    <div id="app" v-cloak>
+        <div class="container">
+            <div class="card mt-3">
+                <h1 class="title">{{ title }}</h1>
+                <div class="steps mt-3">
+                    <div class="step-content">
+                        <p v-show="a === 0">В блоке вы познакомитесь со всеми основами Vue.js на практике. На протяжении блока мы напишем реактивное приложение, в процессе разработки которого разберем вся базу фреймворка.</p>
+                        <p v-show="a === 1">Один из самых важных блоков в курсе, где вы узнаете все о компонентах. В блоке мы напишем 2 разных приложения и создадим более 5 различных UI компонентов как в реальной разработке. Блок расскажет про абсолютно все составляющие, которые есть в компонентах: взаимодействие, slots, асинхронные и динамические компоненты и тонна примеров.</p>
+                        <p v-show="a === 2">В данном блоке вы узнаете все о том, как работает мультиязычность во Vue. Мы создадим миниклон Gmail в данном блоке, где вы на практике увидите как работать с динамическим роутером.</p>
+                        <p v-show="a === 3">В блоке вы узнаете абсолютно все про Vuex. Вы узнаете как работать с данными, какие есть лучшие практики по их программированию и структурированию. Все на практике.</p>
+                        <p v-show="a === 4 || a === 5">Одним из наиболее важных обновлений в Vue 3 является появление альтернативного синтаксиса Composition API. В этом блоке вы узнаете все, чтобы полностью пользоваться данными синтаксисом на практических примерах. Помимо этого вы узнаете как работать совместно с Vue Router и Vuex.</p>
+                    </div>
+                    <ul class="step-list list">
+                        <li class="list-item">
+                            <span :class="{'active': a >= 0}" class="list-item-number" @click="a = 0">1</span> <span class="list-item-text">Основы</span>
+                        </li>
+                        <li class="list-item">
+                            <span :class="{'active': a >= 1}" class="list-item-number" @click="a = 1">2</span> <span class="list-item-text">Компоненты</span>
+                        </li>
+                        <li class="list-item">
+                            <span :class="{'active': a >= 2}" class="list-item-number" @click="a = 2">3</span> <span class="list-item-text">Роутер</span>
+                        </li>
+                        <li class="list-item">
+                            <span :class="{'active': a >= 3}" class="list-item-number" @click="a = 3">4</span> <span class="list-item-text">Vuex</span>
+                        </li>
+                        <li class="list-item">
+                            <span :class="{'active': a >= 4}" class="list-item-number" @click="a = 4">5</span> <span class="list-item-text">Composition</span>
+                        </li>
+                    </ul>
+                </div>
+                <div class="buttons">
+                    <button type="button" class="btn btn-outline-danger" @click="a--" :class="{disabled: a <= 0}" v-show="a <= 4">Назад</button>
+                    <button type="button" class="btn btn-outline-success" @click="add" v-show="a < 4">Вперед</button>
+                    <button type="button" class="btn btn-warning" @click="zakonchit" v-show="a === 4">Закончить</button>
+                    <button type="button" class="btn btn-outline-secondary" @click="a = 0" v-show="a === 5">Начать заного</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.14/vue.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+    <script src="./app.js"></script>
+</body>
+</html>
+
+<!--:class="{'active': isActive[0] === true}"-->
